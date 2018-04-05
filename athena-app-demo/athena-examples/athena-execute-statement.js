@@ -1,5 +1,11 @@
+/**
+ * It execcutes the query string
+ * returns the `QueryExecutionId`
+ * `QueryExecutionId` is used to fetch the results saved on OutputLocation
+ */
 var AWS = require('aws-sdk');
-var athena = new AWS.Athena({ region: 'us-east-1' });
+AWS.config.loadFromPath('../config/config.json');
+var athena = new AWS.Athena();
 
 var params = {
   QueryString: 'SELECT * FROM portfolioManagement.account', 

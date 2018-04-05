@@ -1,35 +1,10 @@
-// var a=[{
-//     "Data": [{
-//         "VarCharValue": "id"
-//     }, {
-//         "VarCharValue": "name"
-//     }]
-// }, {
-//     "Data": [{
-//         "VarCharValue": "1"
-//     }, {
-//         "VarCharValue": "'Mandeep'"
-//     }]
-// }, {
-//     "Data": [{
-//         "VarCharValue": "2"
-//     }, {
-//         "VarCharValue": "Magandeep"
-//     }]
-// }, {
-//     "Data": [{
-//         "VarCharValue": "3"
-//     }, {
-//         "VarCharValue": "Aashu"
-//     }]
-// }]
-module.exports.AWSFormatToJSON = (a)=>{
+module.exports.AWSFormatToJSON = (AWSFormatObject)=>{
     var fields=[]
     var computedObject = {}
     var completeComputedArray=[]
     var iterator=0
     // console.log(a)
-    a = a.map((data,index)=>{
+    AWSFormatObject = AWSFormatObject.map((data,index)=>{
         
         return data['Data'].map((d,i)=>{
             if(index==0){

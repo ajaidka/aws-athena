@@ -1,5 +1,9 @@
+/**
+ * Returns the list on `NamedQueryIds`
+ */
 var AWS = require('aws-sdk');
-var athena = new AWS.Athena({ region: 'us-east-1' });
+AWS.config.loadFromPath('../config/config.json');
+var athena = new AWS.Athena();
 
 
 var params = {

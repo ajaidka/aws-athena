@@ -1,5 +1,9 @@
+/**
+ * It uses `NamedQueryIds` to fetch the saved query from Athena
+ */
 var AWS = require('aws-sdk');
-var athena = new AWS.Athena({ region: 'us-east-1' });
+var configProperties = require('../config/config.json');
+var athena = new AWS.Athena(configProperties.awscred);
 var params = {
     NamedQueryIds: [ /* required */
         '4fcc4bc3-2008-4302-9f32-4e9429c8dac0',

@@ -1,12 +1,15 @@
+/**
+ * It creates a `QueryString`
+ * Saves it on the Athena
+ */
 var AWS = require('aws-sdk');
-var athena = new AWS.Athena({ region: 'us-east-1' });
+var configProperties = require('../config/config');
+var athena = new AWS.Athena(configProperties.awscred);
 
 var params = {
     Database: 'portfolioManagement', /* required */
-    Name: 'ddl-portfolio-test', /* required */
+    Name: 'ddl-portfolio-test-1', /* required */
     QueryString: 'SELECT * FROM portfolio', /* required */
-    // ClientRequestToken: 'STRING_VALUE',
-    // Description: 'STRING_VALUE'
 };
 athena.createNamedQuery(params, function (err, data) {
     if (err) console.log(err, err.stack); // an error occurred

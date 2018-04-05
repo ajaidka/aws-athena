@@ -1,5 +1,11 @@
+/**
+ * It executes the join query
+ * returns the `QueryExecutionId`
+ * `QueryExecutionId` is used to fetch the results saved on OutputLocation
+ */
 var AWS = require('aws-sdk');
-var athena = new AWS.Athena({ region: 'us-east-1' });
+AWS.config.loadFromPath('../config/config.json');
+var athena = new AWS.Athena();
 
 var params = {
     QueryString: 'select p.id as portfolioId ,  p.name as portfolioName , a.id as accountId , a.name as accountName  from portfolioManagement.account a join portfolioManagement.portfolio p on a.portfolioid = p.id', 
