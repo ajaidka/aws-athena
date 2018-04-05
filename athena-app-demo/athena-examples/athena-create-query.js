@@ -1,7 +1,7 @@
 /**
- * It creates a `QueryString`
- * Saves it on the Athena
- */
+* It creates a `QueryString`
+* Saves it on the Athena
+*/
 var AWS = require('aws-sdk');
 var configProperties = require('../config/config');
 var athena = new AWS.Athena(configProperties.awscred);

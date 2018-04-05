@@ -1,16 +1,16 @@
 /**
- * It executes the join query
- * returns the `QueryExecutionId`
- * `QueryExecutionId` is used to fetch the results saved on OutputLocation
- */
+* It executes the join query
+* returns the `QueryExecutionId`
+* `QueryExecutionId` is used to fetch the results saved on OutputLocation
+*/
 var AWS = require('aws-sdk');
-AWS.config.loadFromPath('../config/config.json');
-var athena = new AWS.Athena();
+var configProperties = require('../config/config.json');
+var athena = new AWS.Athena(configProperties.awscred);
 
 var params = {
     QueryString: 'select p.id as portfolioId ,  p.name as portfolioName , a.id as accountId , a.name as accountName  from portfolioManagement.account a join portfolioManagement.portfolio p on a.portfolioid = p.id', 
     ResultConfiguration: { 
-        OutputLocation: 's3://aws-athena-query-results-5262-3848-1292-region', 
+        OutputLocation: configProperties.outputLocation, 
     }
 };
 

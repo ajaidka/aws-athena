@@ -1,11 +1,9 @@
 {
-    "outputLocation":"s3://OUTPUT-BUCKET",
-    "database":"DATABASE",
-
-    "awscred" : {
-        "accessKeyId":"ACCESSKEYID",
+    "outputLocation": "s3://OUTPUT-BUCKET",
+    "database": "DATABASE",
+    "awscred": {
+        "accessKeyId": "ACCESSKEYID",
         "secretAccessKey": "SECRETACCESSKEY",
-        "region": "us-east-1" 
+        "region": "us-east-1"
     }
-
 }

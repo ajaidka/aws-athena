@@ -1,9 +1,13 @@
+/**
+ * 
+ * @param {*} AWSFormatObject 
+ * Converts AWS format object to JSON
+ */
 module.exports.AWSFormatToJSON = (AWSFormatObject)=>{
     var fields=[]
     var computedObject = {}
     var completeComputedArray=[]
     var iterator=0
-    // console.log(a)
     AWSFormatObject = AWSFormatObject.map((data,index)=>{
         
         return data['Data'].map((d,i)=>{
@@ -13,7 +17,6 @@ module.exports.AWSFormatToJSON = (AWSFormatObject)=>{
             else{
                 
                 computedObject = Object.assign(computedObject,{ [fields[i]]:Object.values(d)[0]}) 
-                // console.log(computedObject,i,iterator)
                 if(index>0 &&i==data['Data'].length-1){
                     
                     completeComputedArray.push(computedObject)
@@ -27,6 +30,5 @@ module.exports.AWSFormatToJSON = (AWSFormatObject)=>{
         })
     })
     
-    // console.log(completeComputedArray);
     return completeComputedArray
 }

@@ -2,10 +2,9 @@
   "name": "iot-time-difference",
   "version": "1.0.0",
   "description": "",
-  "main": "athena-create-query.js",
+  "main": "iot-device-monitoring.js",
   "dependencies": {
-    "aws-sdk": "^2.221.1",
-    "moment": "^2.22.0"
+    "aws-sdk": "^2.221.1"
   },
   "devDependencies": {},
   "scripts": {

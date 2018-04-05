@@ -1,16 +1,17 @@
 /**
- * It execcutes the query string
- * returns the `QueryExecutionId`
- * `QueryExecutionId` is used to fetch the results saved on OutputLocation
- */
+* It execcutes the query string
+* returns the `QueryExecutionId`
+* `QueryExecutionId` is used to fetch the results saved on OutputLocation
+*/
 var AWS = require('aws-sdk');
-AWS.config.loadFromPath('../config/config.json');
-var athena = new AWS.Athena();
+var configProperties = require('../config/config');
+
+var athena = new AWS.Athena(configProperties.awscred);
 
 var params = {
   QueryString: 'SELECT * FROM portfolioManagement.account', 
   ResultConfiguration: { 
-    OutputLocation: 's3://aws-athena-query-results-5262-3848-1292-region', 
+    OutputLocation: configProperties.outputLocation, 
   },
   QueryExecutionContext: {
     Database: 'portfolioManagement'
