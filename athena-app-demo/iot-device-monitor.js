@@ -10,8 +10,8 @@ var athena = new AWS.Athena(configProperties.awscred);
 
 var AWSObjectToJSON = require('./helper/compute').AWSFormatToJSON;
 var params = {
-    QueryString: 'SELECT id,max(time) as time FROM "iot_data_management"."iot" group by id;', 
-    ResultConfiguration: { 
+    QueryString: 'SELECT id,max(time) as time FROM "iot_data_management"."iot" group by id;',
+    ResultConfiguration: {
         OutputLocation: configProperties.outputLocation, //Output location (S3)
     },
     QueryExecutionContext: {
@@ -24,43 +24,43 @@ var params = {
 * It returns the `QueryExecutionId`
 * 
 */
-athena.startQueryExecution(params, function(err, data) {
-    
+athena.startQueryExecution(params, function (err, data) {
+
     if (err) {
         console.log(err, err.stack);
     }
-    else  {
-        
+    else {
+
         var param = {
-            QueryExecutionId: data.QueryExecutionId, 
+            QueryExecutionId: data.QueryExecutionId,
         };
-        
+
         /**
         * `QueryExecutionId` is used as param to fetch the result of executed query saved on S3
         */
         athena.getQueryResults(param, function (err, data) {
             if (err) {
-                console.log(err, err.stack); 
+                console.log(err, err.stack);
             }
-            else{
+            else {
                 var maxTime = []
                 var now = new Date().getTime()
-                var difference=0;
-                
+                var difference = 0;
+
                 data = AWSObjectToJSON(data.ResultSet.Rows)
-                data.map(object=>{
-                    difference = now - object.time;
-                    difference = difference / 60
-                    
+                data.map(object => {
+                    difference = (now - object.time)/1000;
+
+                    // minThrashold is 5, maxThrashold is 10 (seconds)
                     if (difference < 5 || difference > 10) {
-                        console.log('Error for id - %s: Either Time Difference < 5 or Difference > 10', object.id )
+                        console.log('Threshold Warning for deviceId - %s:', object.id)
                     }
                     else {
                         console.log('Its fine')
                     }
                 })
-                
-            }    
+
+            }
         });
-    }  
+    }
 });
