@@ -1,0 +1,34 @@
+[
+    {
+        "Data": [
+            {
+                "VarCharValue": "portfolioId"
+            },
+            {
+                "VarCharValue": "portfolioName"
+            },
+            {
+                "VarCharValue": "accountId"
+            },
+            {
+                "VarCharValue": "accountName"
+            }
+        ]
+    },
+    {
+        "Data": [
+            {
+                "VarCharValue": "1"
+            },
+            {
+                "VarCharValue": "'Mandeep'"
+            },
+            {
+                "VarCharValue": "1"
+            },
+            {
+                "VarCharValue": "'Mandeep'"
+            }
+        ]
+    }
+]

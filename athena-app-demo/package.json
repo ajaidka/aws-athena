@@ -1,0 +1,16 @@
+{
+  "name": "athena-app-aws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "athena-create-query.js",
+  "dependencies": {
+    "aws-sdk": "^2.220.1",
+    "moment": "^2.22.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhinav Juneja",
+  "license": "ISC"
+}
